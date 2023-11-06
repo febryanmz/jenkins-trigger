@@ -1,0 +1,37 @@
+pipeline {
+    agent {
+        label 'any'
+    }
+    environment {
+        DOCKER_IMAGE = 'febryanmz/raja-ongkir:latest'  // Replace this with your Docker Hub image and tag
+    }
+    stages {
+        stage('Pull Docker Image') {
+            steps {
+                script {
+                    def dockerImage = docker.image("${DOCKER_IMAGE}")
+                    dockerImage.pull()
+                }
+            }
+        }
+        stage('Run Docker Container') {
+            steps {
+                script {
+                    def dockerImage = docker.image("${DOCKER_IMAGE}")
+                    def dockerContainer = dockerImage.run("-p 5000:80")
+                    
+                    // Wait for the container to exit (or you can run other commands in parallel)
+                    dockerContainer.waitForStatus('exited')
+                }
+            }
+        }
+    }
+    post {
+        success {
+            echo 'Docker container successfully executed!'
+        }
+        failure {
+            error('Docker container execution failed!')
+        }
+    }
+}
