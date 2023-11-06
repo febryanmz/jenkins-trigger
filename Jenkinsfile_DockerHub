@@ -3,13 +3,13 @@ pipeline {
         label 'master'
     }
     environment {
-        DOCKER_IMAGE = 'febryanmz/raja-ongkir:latest'
+        DOCKER_IMAGE = 'febryanmz/raja-ongkir:latest'  
     }
     stages {
         stage('Pull Docker Image') {
             steps {
                 def dockerImage = docker.image("${DOCKER_IMAGE}")
-                def dockerImage.pull()
+                dockerImage.pull()
             }
         }
         stage('Run Docker Container') {
