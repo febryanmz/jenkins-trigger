@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'any'
+        label 'master'
     }
     environment {
         DOCKER_IMAGE = 'febryanmz/raja-ongkir:latest'  // Replace this with your Docker Hub image and tag
