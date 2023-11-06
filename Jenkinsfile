@@ -4,23 +4,28 @@ pipeline {
     }
     environment {
         DOCKER_IMAGE = 'febryanmz/raja-ongkir:latest'
+        SERVICE_NAME = 'test'
     }
     stages {
         stage('Pull Docker Image') {
             steps {
                 script {
-                    def dockerImage = docker.image("${DOCKER_IMAGE}")
-                    dockerImage.pull()
+                    // def dockerImage = docker.image("${DOCKER_IMAGE}")
+                    // dockerImage.pull()
+
+                    sh 'docker pull ${DOCKER_IMAGE}'
                 }
             }
         }
         stage('Run Docker Container') {
             steps {
                 script {
-                    def dockerImage = docker.image("${DOCKER_IMAGE}")
-                    def dockerContainer = dockerImage.run("-p 5000:80")
+                    // def dockerImage = docker.image("${DOCKER_IMAGE}")
+                    // def dockerContainer = dockerImage.run("-p 5000:80")
                     
-                    dockerContainer.waitForStatus('exited')
+                    // dockerContainer.waitForStatus('exited')
+
+                    sh 'docker run -p 5000:80 test ${DOCKER_IMAGE}'
                 }
             }
         }
