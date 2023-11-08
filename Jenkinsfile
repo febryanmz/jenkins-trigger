@@ -14,7 +14,9 @@ pipeline {
         }
         stage('Test') {
             agent {
-                label 'master'
+                node {
+                    label 'master'
+                }
             }
             environment {
                 STAGE_ENVIRONMENT = 'Stage Environment'
