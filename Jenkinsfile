@@ -13,11 +13,11 @@ pipeline {
             }
         }
         stage('Test') {
-            agent {
-                node {
-                    label 'master'
-                }
-            }
+            // agent {
+            //     node {
+            //         label 'master'
+            //     }
+            // }
             environment {
                 STAGE_ENVIRONMENT = 'Stage Environment'
             }
