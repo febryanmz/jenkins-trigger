@@ -9,13 +9,13 @@ pipeline {
         stage('Development') {
             steps {
                 echo "This is Development Stage"
-                echo "You are running on service ${GLOBAL_ENVIRONMENT}"
+                echo "You are running on service ${GLOBAL_ENVIRONMENT}" //? accessing values from GLOBAL_ENVIRONMENT
             }
         }
         stage('Test') {
-            agent {
+            agent { 
                 node {
-                    label 'master'
+                    label 'master' //todo use agent only in this 'Test' stage
                 }
             }
             environment {
@@ -23,13 +23,13 @@ pipeline {
             }
             steps {
                 echo "This is Test Stage"
-                echo "This is ${STAGE_ENVIRONMENT}"
+                echo "This is ${STAGE_ENVIRONMENT}" //? accessing values from STAGE_ENVIRONMENT
             }
         }
         stage('UAT') {
             steps {
                 echo "This is UAT Stage"
-                // echo "I Will try to access STAGE_ENV : ${STAGE_ENVIRONMENT}" // You can't use this, it result error
+                //! echo "STAGE_ENV : ${STAGE_ENVIRONMENT}" // accessing values from different stages, it produces an error. don't use this!
             }
         }
     }
