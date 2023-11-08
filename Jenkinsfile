@@ -3,18 +3,22 @@ pipeline {
         label 'master'
     }
     environment {
-        GLOBAL_ENVIRONMENT = 'Test-Service'
+        GLOBAL_ENVIRONMENT = "Global Environment"
     }
     stages {
         stage('Development') {
             steps {
-                echo "You are running on service ${GLOBAL_ENVIRONMENT}"
                 echo 'This is Development Stage'
+                echo 'You are running on service ${GLOBAL_ENVIRONMENT}'
             }
         }
         stage('Test') {
+            environment {
+                STAGE_ENVIRONMENT = "Stage Environment"
+            }
             steps {
                 echo 'This is Test Stage'
+                echo 'This is ${STAGE_ENVIRONMENT}'
             }
         }
         stage('UAT') {
