@@ -29,7 +29,7 @@ pipeline {
         stage('UAT') {
             steps {
                 echo "This is UAT Stage"
-                echo "I Will try to access STAGE_ENV : ${STAGE_ENVIRONMENT}" // You can't use this, because it is a different stage
+                // echo "I Will try to access STAGE_ENV : ${STAGE_ENVIRONMENT}" // You can't use this, it result error
             }
         }
     }
