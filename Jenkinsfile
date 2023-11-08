@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Development') {
             steps {
-                echo 'You are running on service {$GLOBAL_ENVIRONMENT}'
+                echo "You are running on service ${GLOBAL_ENVIRONMENT}"
                 echo 'This is Development Stage'
             }
         }
