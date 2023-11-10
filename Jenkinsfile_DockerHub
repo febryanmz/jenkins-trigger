@@ -3,8 +3,8 @@ pipeline {
         label any
     }
     environment {
-        DOCKER_IMAGE = 'febryanmz/raja-ongkir:latest'
-        SERVICE_NAME = 'test'
+        DOCKER_IMAGE = "febryanmz/raja-ongkir:latest"
+        SERVICE_NAME = "test"
     }
     stages {
         stage('Pull Docker Image') {
