@@ -33,12 +33,12 @@ pipeline {
             }
         }
     }
-    post {
-        success {
-            echo 'Docker container successfully executed!'
-        }
-        failure {
-            error('Docker container execution failed!')
-        }
-    }
+    // post {
+    //     success {
+    //         echo 'Docker container successfully executed!'
+    //     }
+    //     failure {
+    //         error('Docker container execution failed!')
+    //     }
+    // }
 }
