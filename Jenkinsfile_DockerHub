@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'master'
+        label any
     }
     environment {
         DOCKER_IMAGE = 'febryanmz/raja-ongkir:latest'
