@@ -20,14 +20,14 @@ pipeline {
                 }
             }
             steps {
-                script {
-                    def dockerImage = docker.image("${DOCKER_IMAGE}")
-                    dockerImage.pull()
+                // script {
+                //     def dockerImage = docker.image("${DOCKER_IMAGE}")
+                //     dockerImage.pull()
 
                     
-                }
-                // echo 'Try to pull images from Dockerhub'
-                // sh 'docker pull ${DOCKER_IMAGE}'
+                // }
+                echo 'Try to pull images from Dockerhub'
+                sh 'docker pull ${DOCKER_IMAGE}'
             }
         }
         stage('Run Docker Container') {
@@ -37,15 +37,15 @@ pipeline {
                 }
             }
             steps {
-                script {
-                    def dockerImage = docker.image("${DOCKER_IMAGE}")
-                    def dockerContainer = dockerImage.run("-p 5000:8080")
+                // script {
+                //     def dockerImage = docker.image("${DOCKER_IMAGE}")
+                //     def dockerContainer = dockerImage.run("-p 5000:8080")
                     
-                    dockerContainer.waitForStatus('exited')
+                //     dockerContainer.waitForStatus('exited')
                     
-                }
-                // echo 'Try to run images from Docker'
-                // sh 'docker run -p 5000:8080 ${SERVICE_NAME} ${DOCKER_IMAGE}'
+                // }
+                echo 'Try to run images from Docker'
+                sh 'docker run -p 5000:8080 ${SERVICE_NAME} ${DOCKER_IMAGE}'
             }
         }
         stage('End Stage') {
@@ -54,12 +54,12 @@ pipeline {
             }
         }
     }
-    post {
-        success {
-            echo 'Docker container successfully executed!'
-        }
-        failure {
-            error('Docker container execution failed!')
-        }
-    }
+    // post {
+    //     success {
+    //         echo 'Docker container successfully executed!'
+    //     }
+    //     failure {
+    //         error('Docker container execution failed!')
+    //     }
+    // }
 }
