@@ -20,12 +20,6 @@ pipeline {
                 }
             }
             steps {
-                // script {
-                //     def dockerImage = docker.image("${DOCKER_IMAGE}")
-                //     dockerImage.pull()
-
-                    
-                // }
                 echo 'Try to pull images from Dockerhub'
                 sh 'docker pull ${DOCKER_IMAGE}'
             }
@@ -37,13 +31,6 @@ pipeline {
                 }
             }
             steps {
-                // script {
-                //     def dockerImage = docker.image("${DOCKER_IMAGE}")
-                //     def dockerContainer = dockerImage.run("-p 5000:8080")
-                    
-                //     dockerContainer.waitForStatus('exited')
-                    
-                // }
                 echo 'Try to run images from Docker'
                 sh 'docker run -d -p 5000:8080 ${DOCKER_IMAGE}'
             }
